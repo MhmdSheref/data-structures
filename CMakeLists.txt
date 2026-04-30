@@ -9,4 +9,9 @@ add_executable(DataStruct main.cpp
         QueueLinkedList.cpp
         QueueLinkedList.h
         Node.cpp
-        Node.h)
+        Node.h
+        LinkedList.h
+        LinkedList.cpp
+        StackArray.cpp
+        StackArray.h
+        StackLinkedList.cpp)

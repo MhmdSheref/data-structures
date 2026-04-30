@@ -1,7 +1,3 @@
-//
-// Created by MhmdSheref on 28/04/2026.
-//
-
 #ifndef QUEUE_H
 #define QUEUE_H
 

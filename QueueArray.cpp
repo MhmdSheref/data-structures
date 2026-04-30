@@ -1,7 +1,3 @@
-//
-// Created by MhmdSheref on 28/04/2026.
-//
-
 #include "QueueArray.h"
 
 #include <iostream>

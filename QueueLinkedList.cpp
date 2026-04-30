@@ -1,7 +1,3 @@
-//
-// Created by MhmdSheref on 28/04/2026.
-//
-
 #include "QueueLinkedList.h"
 
 #include <iostream>
@@ -12,6 +8,15 @@ QueueLinkedList::QueueLinkedList(){
     front=nullptr;
     rear=nullptr;
     length=0;
+}
+
+QueueLinkedList::~QueueLinkedList() {
+    Node* node = front;
+    while (node != nullptr) {
+        Node* newNode = node->next;
+        delete node;
+        node = newNode;
+    }
 }
 
 void QueueLinkedList::enqueue(int value) {

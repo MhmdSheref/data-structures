@@ -1,12 +1,6 @@
-//
-// Created by Ammar on 28/04/2026.
-//
-
 #ifndef QUEUELINKEDLIST_H
 #define QUEUELINKEDLIST_H
 
-#include <iostream>
-#include <stdexcept>
 #include "Node.h"
 
 class QueueLinkedList{
@@ -16,6 +10,11 @@ class QueueLinkedList{
 
 public:
     QueueLinkedList();
+
+    ~QueueLinkedList();
+
+    QueueLinkedList(const QueueLinkedList&) = delete;
+    QueueLinkedList& operator=(const QueueLinkedList&) = delete;
 
     void enqueue(int value);
 
