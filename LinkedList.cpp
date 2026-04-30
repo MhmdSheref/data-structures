@@ -1,62 +1,73 @@
 #include <iostream>
 #include "LinkedList.h"
-#include "Node.h"
 using namespace std;
-	LinkedList::LinkedList(Node* h) {
-		head = h;
-		tail = h;
-		length = 1;
-	}
-	LinkedList::~LinkedList() {
-		while (head != nullptr) {
-			Node* node = head->next;
-			delete node;
-			head = node;
-		}
-		cout << "Destroyed Linked List Successfully!";
-	}
-	void LinkedList::append(int value) {
-		Node* newNode = new Node(value);
-		tail->next = newNode;
-		newNode->next = nullptr;
-		tail = newNode;
-		length++;
-	}
-	void LinkedList::prepend(int value) {
-		Node* newNode = new Node(value);
-		newNode->next = head;
-		length++;
-		head = newNode;
-	}
-	int LinkedList::removeLast() {
-		Node* pre = head;
-		Node* temp = head;
-		while (temp->next) {
-			pre = temp;
-			temp = temp->next;
-		}
-		tail = pre;
-		tail->next = nullptr;
-		length--;
-		int removed = temp->value;
-		delete temp;
-		return removed;
-	}
-	int LinkedList::removeFirst() {
-		Node* temp = head;
-		head = head->next;
-		length--;
-		int removed = temp->value;
-		delete temp;
-		return removed;
 
-	}
-	void LinkedList::Display() {
-		Node* temp = head;
-		cout << "[ ";
-		for (int i = 0; i < length;i++) {
-			cout << temp->value << " ";
-			temp = temp->next;
-		}
-		cout << "]";
-	}
+LinkedList::LinkedList() : head(nullptr), tail(nullptr), length(0) {}
+
+LinkedList::~LinkedList() {
+    while (head != nullptr) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
+void LinkedList::insertAtHead(int value) {
+    Node* newNode = new Node(value);
+    newNode->next = head;
+    head = newNode;
+    if (tail == nullptr)
+        tail = newNode;
+    length++;
+}
+
+void LinkedList::insertAtEnd(int value) {
+    Node* newNode = new Node(value);
+    if (tail == nullptr) {
+        head = newNode;
+        tail = newNode;
+    } else {
+        tail->next = newNode;
+        tail = newNode;
+    }
+    length++;
+}
+
+void LinkedList::deleteValue(int value) {
+    if (head == nullptr) return;
+
+    if (head->data == value) {
+        Node* temp = head;
+        head = head->next;
+        if (head == nullptr)
+            tail = nullptr;
+        delete temp;
+        length--;
+        return;
+    }
+
+    Node* prev = head;
+    Node* curr = head->next;
+    while (curr != nullptr) {
+        if (curr->data == value) {
+            prev->next = curr->next;
+            if (curr == tail)
+                tail = prev;
+            delete curr;
+            length--;
+            return;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+}
+
+void LinkedList::display() {
+    Node* temp = head;
+    cout << "[ ";
+    while (temp != nullptr) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << "]" << endl;
+}

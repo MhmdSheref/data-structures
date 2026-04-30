@@ -1,20 +1,19 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 #include "Node.h"
+
 class LinkedList {
 private:
-	Node* head;
-	Node* tail;
-	int length;
+    Node* head;
+    Node* tail;
+    int length;
 public:
-	LinkedList(Node* h);
-	void append(int value);
-	void prepend(int value);
-	int removeLast();
-	int removeFirst();
-	void Display();
+    LinkedList();
+    ~LinkedList();
+    void insertAtHead(int value);
+    void insertAtEnd(int value);
+    void deleteValue(int value);
+    void display();
 };
 
-#endif // !LINKEDLIST_H
-
-
+#endif // LINKEDLIST_H

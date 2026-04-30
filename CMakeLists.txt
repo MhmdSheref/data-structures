@@ -4,14 +4,10 @@ project(DataStruct)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(DataStruct main.cpp
-        QueueArray.cpp
-        QueueArray.h
-        QueueLinkedList.cpp
-        QueueLinkedList.h
-        Node.cpp
         Node.h
         LinkedList.h
         LinkedList.cpp
-        StackArray.cpp
-        StackArray.h
-        StackLinkedList.cpp)
+        Queue.cpp
+        Queue.h
+        Stack.cpp
+        Stack.h)
