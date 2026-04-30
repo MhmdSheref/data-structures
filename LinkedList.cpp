@@ -1,40 +1,34 @@
-//made by youssef 29/4/2026
 #include <iostream>
+#include "LinkedList.h"
+#include "Node.h"
 using namespace std;
-class Node {
-public:
-	int value;
-	Node* next;
-	Node(int val) {
-		value = val;
-		next = nullptr;
-	}
-};
-class LinkedList {
-private:
-	Node* head;
-	Node* tail;
-	int length;
-public:
-	LinkedList(Node* h) {
+	LinkedList::LinkedList(Node* h) {
 		head = h;
 		tail = h;
 		length = 1;
 	}
-	void append(int value) {
+	LinkedList::~LinkedList() {
+		while (head != nullptr) {
+			Node* node = head->next;
+			delete node;
+			head = node;
+		}
+		cout << "Destroyed Linked List Successfully!";
+	}
+	void LinkedList::append(int value) {
 		Node* newNode = new Node(value);
 		tail->next = newNode;
 		newNode->next = nullptr;
 		tail = newNode;
 		length++;
 	}
-	void prepend(int value) {
+	void LinkedList::prepend(int value) {
 		Node* newNode = new Node(value);
 		newNode->next = head;
 		length++;
 		head = newNode;
 	}
-	int removeLast() {
+	int LinkedList::removeLast() {
 		Node* pre = head;
 		Node* temp = head;
 		while (temp->next) {
@@ -48,7 +42,7 @@ public:
 		delete temp;
 		return removed;
 	}
-	int removeFirst() {
+	int LinkedList::removeFirst() {
 		Node* temp = head;
 		head = head->next;
 		length--;
@@ -57,7 +51,7 @@ public:
 		return removed;
 
 	}
-	void Display() {
+	void LinkedList::Display() {
 		Node* temp = head;
 		cout << "[ ";
 		for (int i = 0; i < length;i++) {
@@ -66,8 +60,3 @@ public:
 		}
 		cout << "]";
 	}
-};
-
-
-
-
