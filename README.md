@@ -33,7 +33,7 @@ Each structure includes:
 
 ---
 
-## 🧠 What You Will Learn
+## 🧠 What You Will Learn:
 - How data is stored and organized
 - Time and space complexity basics
 - When to use each data structure
